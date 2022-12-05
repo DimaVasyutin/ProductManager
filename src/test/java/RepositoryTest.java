@@ -3,26 +3,26 @@ import org.junit.jupiter.api.Test;
 
 public class RepositoryTest {
 
-    Product product = new Product(1,"Вещь",1000);
-    Book book = new Book(2,"Книга",2000,"Автор");
-    Smartphone smartphone = new Smartphone(3,"Смартфон",10_000,"Samsung");
+    Product product = new Product(1, "Вещь", 1000);
+    Book book = new Book(2, "Книга", 2000, "Автор");
+    Smartphone smartphone = new Smartphone(3, "Смартфон", 10_000, "Samsung");
 
     @Test
-    public void testAddAndFindAllProduct(){
+    public void testAddAndFindAllProduct() {
         ProductRepository repo = new ProductRepository();
 
         repo.saveProduct(product);
         repo.saveProduct(book);
         repo.saveProduct(smartphone);
 
-        Product[] expected = {product,book,smartphone};
+        Product[] expected = {product, book, smartphone};
         Product[] actual = repo.findAll();
 
         Assertions.assertArrayEquals(expected, actual);
     }
 
     @Test
-    public void testRemovedById(){
+    public void testRemovedById() {
         ProductRepository repo = new ProductRepository();
 
         repo.saveProduct(product);
@@ -30,7 +30,7 @@ public class RepositoryTest {
         repo.saveProduct(smartphone);
         repo.removeById(2);
 
-        Product[] expected = {product,smartphone};
+        Product[] expected = {product, smartphone};
         Product[] actual = repo.findAll();
 
         Assertions.assertArrayEquals(expected, actual);
@@ -38,7 +38,7 @@ public class RepositoryTest {
 
 
     @Test
-    public void testRemovedByNoId(){
+    public void testRemovedByNoId() {
         ProductRepository repo = new ProductRepository();
 
         repo.saveProduct(product);
@@ -46,14 +46,14 @@ public class RepositoryTest {
         repo.saveProduct(smartphone);
         repo.removeById(4);
 
-        Product[] expected = {product,book,smartphone};
+        Product[] expected = {product, book, smartphone};
         Product[] actual = repo.findAll();
 
         Assertions.assertArrayEquals(expected, actual);
     }
 
     @Test
-    public void testGetPrice(){
+    public void testGetPrice() {
 
         int expected = 1000;
         int actual = product.getPrice();
@@ -62,7 +62,7 @@ public class RepositoryTest {
     }
 
     @Test
-    public void testGetName(){
+    public void testGetName() {
 
         String expected = "Вещь";
         String actual = product.getName();
@@ -71,7 +71,7 @@ public class RepositoryTest {
     }
 
     @Test
-    public void testGetAuthor(){
+    public void testGetAuthor() {
 
         String expected = "Автор";
         String actual = book.getAuthor();
@@ -80,14 +80,13 @@ public class RepositoryTest {
     }
 
     @Test
-    public void testGetManufacturer(){
+    public void testGetManufacturer() {
 
         String expected = "Samsung";
         String actual = smartphone.getManufacturer();
 
         Assertions.assertEquals(expected, actual);
     }
-
 
 
 }

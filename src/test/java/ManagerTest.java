@@ -6,19 +6,19 @@ public class ManagerTest {
     ProductRepository repo = new ProductRepository();
     Manager manager = new Manager(repo);
 
-    Product product = new Product(1,"Вещь",1000);
-    Book book = new Book(2,"Книга",2000,"Автор");
-    Smartphone smartphone = new Smartphone(3,"Смартфон",10_000,"Samsung");
+    Product product = new Product(1, "Вещь", 1000);
+    Book book = new Book(2, "Книга", 2000, "Автор");
+    Smartphone smartphone = new Smartphone(3, "Смартфон", 10_000, "Samsung");
 
     @BeforeEach
-    public void setUd(){
+    public void setUd() {
         manager.saveProduct(product);
         manager.saveProduct(book);
         manager.saveProduct(smartphone);
     }
 
     @Test
-    public void testSearchBy(){
+    public void testSearchBy() {
 
         Product[] expected = manager.searchBy("Смартфон");
         Product[] actual = {smartphone};
@@ -27,7 +27,16 @@ public class ManagerTest {
     }
 
     @Test
-    public void testSearchByFaild(){
+    public void testSearchByBook() {
+
+        Product[] expected = manager.searchBy("Книга");
+        Product[] actual = {book};
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void testSearchByFaild() {
 
         Product[] expected = manager.searchBy("5454");
         Product[] actual = new Product[1];
@@ -35,29 +44,48 @@ public class ManagerTest {
         Assertions.assertArrayEquals(expected, actual);
     }
 
-
     @Test
-    public void testRemoveById(){
+    public void testSearchByAuothor() {
 
-        Product[] expected = manager.removeById(2);
-        Product[] actual = {product,smartphone};
+        Product[] expected = manager.searchBy("Автор");
+        Product[] actual = {book};
 
         Assertions.assertArrayEquals(expected, actual);
     }
 
     @Test
-    public void testRemoveByIdFail(){
+    public void testSearchByManufacturer() {
+
+        Product[] expected = manager.searchBy("Samsung");
+        Product[] actual = {smartphone};
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+
+    @Test
+    public void testRemoveById() {
+
+        Product[] expected = manager.removeById(2);
+        Product[] actual = {product, smartphone};
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void testRemoveByIdFail() {
 
         manager.removeById(4);
 
-        Product[] expected = {product,book,smartphone};
+        Product[] expected = {product, book, smartphone};
         Product[] actual = manager.findAll();
 
         Assertions.assertArrayEquals(expected, actual);
     }
 
+
     @Test
-    public void testFindById(){
+    public void testFindById() {
 
 
         Product[] expected = {book};

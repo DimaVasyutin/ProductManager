@@ -5,8 +5,21 @@ public class Smartphone extends Product {
         return manufacturer;
     }
 
-    public Smartphone(int id, String name, int price, String manufacturer){
-        super(id,name,price);
+    public Smartphone(int id, String name, int price, String manufacturer) {
+        super(id, name, price);
         this.manufacturer = manufacturer;
+    }
+
+    @Override
+    public boolean matches(String search) {
+        if (super.matches(search)) {
+            return true;
+        } else {
+            if (getManufacturer().contains(search)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
 }
