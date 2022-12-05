@@ -1,11 +1,11 @@
 public class Manager {
-   private ProductRepository repo;
+    private ProductRepository repo;
 
-   public Manager(ProductRepository repo){
-       this.repo = repo;
-   }
+    public Manager(ProductRepository repo) {
+        this.repo = repo;
+    }
 
-    public void saveProduct(Product product){
+    public void saveProduct(Product product) {
         repo.saveProduct(product);
     }
 
@@ -33,13 +33,12 @@ public class Manager {
     }
 
     public Product[] searchBy(String text) {
-        Product[] result = new Product[1]; // тут будем хранить подошедшие запросу продукты
-        for (Product product: repo.findAll()) {
+        Product[] result = new Product[1]; 
+        for (Product product : repo.findAll()) {
             if (matches(product, text)) {
-                result[0] = product;// "добавляем в конец" массива result продукт product
+                result[0] = product;
             }
         }
         return result;
     }
 }
-
