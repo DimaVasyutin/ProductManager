@@ -9,6 +9,7 @@ public class ManagerTest {
     Product product = new Product(1, "Вещь", 1000);
     Book book = new Book(2, "Книга", 2000, "Автор");
     Smartphone smartphone = new Smartphone(3, "Смартфон", 10_000, "Samsung");
+    Smartphone smartphone2 = new Smartphone(4, "Смартфон", 11_000, "Samsung");
 
     @BeforeEach
     public void setUd() {
@@ -22,6 +23,16 @@ public class ManagerTest {
 
         Product[] expected = manager.searchBy("Смартфон");
         Product[] actual = {smartphone};
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+    
+    @Test
+    public void testSearchBTwoSameProduct() {
+        manager.saveProduct(smartphone2);
+
+        Product[] expected = {smartphone, smartphone2};
+        Product[] actual = manager.searchBy("Смартфон");
 
         Assertions.assertArrayEquals(expected, actual);
     }
