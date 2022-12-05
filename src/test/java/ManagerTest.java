@@ -60,8 +60,8 @@ public class ManagerTest {
 
         manager.removeById(4);
 
-        Product[] expected = manager.findAll();
-        Product[] actual = {product, book, smartphone};
+        Product[] expected = {product, book, smartphone};
+        Product[] actual = manager.findAll();
 
         Assertions.assertArrayEquals(expected, actual);
     }
