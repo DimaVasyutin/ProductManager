@@ -33,10 +33,13 @@ public class Manager {
     }
 
     public Product[] searchBy(String text) {
-        Product[] result = new Product[1]; 
+        Product[] result = new Product[0];
+        ProductRepository tmp = new ProductRepository();
+        
         for (Product product : repo.findAll()) {
             if (matches(product, text)) {
-                result[0] = product;
+                tmp.saveProduct(product);
+                result = tmp.findAll();
             }
         }
         return result;
