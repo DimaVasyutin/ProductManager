@@ -21,12 +21,12 @@ public class ManagerTest {
     @Test
     public void testSearchBy() {
 
-        Product[] expected = manager.searchBy("Смартфон");
-        Product[] actual = {smartphone};
+        Product[] expected = {smartphone};
+        Product[] actual = manager.searchBy("Смартфон");
 
         Assertions.assertArrayEquals(expected, actual);
     }
-    
+
     @Test
     public void testSearchBTwoSameProduct() {
         manager.saveProduct(smartphone2);
@@ -40,18 +40,17 @@ public class ManagerTest {
     @Test
     public void testSearchByFaild() {
 
-        Product[] expected = manager.searchBy("5454");
-        Product[] actual = new Product[1];
+        Product[] expected = new Product[0];
+        Product[] actual = manager.searchBy("5454");
 
         Assertions.assertArrayEquals(expected, actual);
     }
 
-
     @Test
     public void testRemoveById() {
 
-        Product[] expected = manager.removeById(2);
-        Product[] actual = {product, smartphone};
+        Product[] expected = {product, smartphone};
+        Product[] actual = manager.removeById(2);
 
         Assertions.assertArrayEquals(expected, actual);
     }
@@ -61,11 +60,12 @@ public class ManagerTest {
 
         manager.removeById(4);
 
-        Product[] expected = {product, book, smartphone};
-        Product[] actual = manager.findAll();
+        Product[] expected = manager.findAll();
+        Product[] actual = {product, book, smartphone};
 
         Assertions.assertArrayEquals(expected, actual);
     }
+
 
     @Test
     public void testFindById() {
