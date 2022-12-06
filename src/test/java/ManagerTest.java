@@ -70,9 +70,46 @@ public class ManagerTest {
         Product[] expected = {smartphone};
         Product[] actual = manager.searchBy("Samsung");
 
+
         Assertions.assertArrayEquals(expected, actual);
     }
 
+    @Test
+    public void testSearchByAuothor() {
+
+        Product[] expected = {book};
+        Product[] actual = manager.searchBy("Автор");
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void testSearchByManufacturer() {
+
+        Product[] expected = {smartphone};
+        Product[] actual = manager.searchBy("Samsung");
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+
+    @Test
+    public void testRemoveById() {
+
+        Product[] expected = {product, smartphone};
+        Product[] actual = manager.removeById(2);
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void testSearchByFaild() {
+
+        Product[] expected = new Product[0];
+        Product[] actual = manager.searchBy("5454");
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
 
     @Test
     public void testRemoveById() {

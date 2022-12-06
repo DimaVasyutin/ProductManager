@@ -29,6 +29,8 @@ public class Manager {
         Product[] result = new Product[0];
         ProductRepository tmp = new ProductRepository();
 
+
+
         for (Product product : repo.findAll()) {
             if (product.matches(text)) {
                 tmp.saveProduct(product);
