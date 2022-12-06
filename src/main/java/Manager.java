@@ -28,15 +28,9 @@ public class Manager {
     public Product[] searchBy(String text) {
         Product[] result = new Product[0];
         ProductRepository tmp = new ProductRepository();
-<<<<<<< HEAD
 
         for (Product product : repo.findAll()) {
-            if (product.matches(text)) {
-=======
-        
-        for (Product product : repo.findAll()) {
             if (matches(product, text)) {
->>>>>>> 5336ad8d90d1c729b1d7560f65305a6b2d6acace
                 tmp.saveProduct(product);
                 result = tmp.findAll();
             }
