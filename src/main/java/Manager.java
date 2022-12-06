@@ -26,10 +26,13 @@ public class Manager {
 
 
     public Product[] searchBy(String text) {
-        Product[] result = new Product[1]; // тут будем хранить подошедшие запросу продукты
+        Product[] result = new Product[0];
+        ProductRepository tmp = new ProductRepository();
+
         for (Product product : repo.findAll()) {
             if (product.matches(text)) {
-                result[0] = product;// "добавляем в конец" массива result продукт product
+                tmp.saveProduct(product);
+                result = tmp.findAll();
             }
         }
         return result;
