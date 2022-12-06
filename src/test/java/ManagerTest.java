@@ -84,24 +84,6 @@ public class ManagerTest {
     }
 
     @Test
-    public void testSearchByFaild() {
-
-        Product[] expected = new Product[0];
-        Product[] actual = manager.searchBy("5454");
-
-        Assertions.assertArrayEquals(expected, actual);
-    }
-
-    @Test
-    public void testRemoveById() {
-
-        Product[] expected = {product, smartphone};
-        Product[] actual = manager.removeById(2);
-
-        Assertions.assertArrayEquals(expected, actual);
-    }
-
-    @Test
     public void testRemoveByIdFail() {
 
         manager.removeById(4);;
