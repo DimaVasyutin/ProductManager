@@ -30,7 +30,7 @@ public class Manager {
         ProductRepository tmp = new ProductRepository();
 
         for (Product product : repo.findAll()) {
-            if (matches(product, text)) {
+            if (product.matches(text)) {
                 tmp.saveProduct(product);
                 result = tmp.findAll();
             }
