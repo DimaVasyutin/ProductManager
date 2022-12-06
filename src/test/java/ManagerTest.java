@@ -33,6 +33,7 @@ public class ManagerTest {
 
         Product[] expected = {smartphone, smartphone2};
         Product[] actual = manager.searchBy("Смартфон");
+<<<<<<< HEAD
 
         Assertions.assertArrayEquals(expected, actual);
     }
@@ -79,17 +80,45 @@ public class ManagerTest {
 
         Product[] expected = {product, smartphone};
         Product[] actual = manager.removeById(2);
+=======
+>>>>>>> 5336ad8d90d1c729b1d7560f65305a6b2d6acace
 
         Assertions.assertArrayEquals(expected, actual);
     }
 
     @Test
+<<<<<<< HEAD
+=======
+    public void testSearchByFaild() {
+
+        Product[] expected = new Product[0];
+        Product[] actual = manager.searchBy("5454");
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void testRemoveById() {
+
+        Product[] expected = {product, smartphone};
+        Product[] actual = manager.removeById(2);
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+>>>>>>> 5336ad8d90d1c729b1d7560f65305a6b2d6acace
     public void testRemoveByIdFail() {
 
         manager.removeById(4);
 
+<<<<<<< HEAD
         Product[] expected = manager.findAll();
         Product[] actual = {product, book, smartphone};
+=======
+        Product[] expected = {product, book, smartphone};
+        Product[] actual = manager.findAll();
+>>>>>>> 5336ad8d90d1c729b1d7560f65305a6b2d6acace
 
         Assertions.assertArrayEquals(expected, actual);
     }
