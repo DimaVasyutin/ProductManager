@@ -86,12 +86,9 @@ public class ManagerTest {
     @Test
     public void testRemoveByIdFail() {
 
-        manager.removeById(4);;
-
-        Product[] expected = {product, book, smartphone};
-        Product[] actual = manager.findAll();
-
-        Assertions.assertArrayEquals(expected, actual);
+       Assertions.assertThrows(NotFoundException.class, () -> {
+           manager.removeById(4);
+       } );
     }
 
 

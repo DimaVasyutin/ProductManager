@@ -44,12 +44,10 @@ public class RepositoryTest {
         repo.saveProduct(product);
         repo.saveProduct(book);
         repo.saveProduct(smartphone);
-        repo.removeById(4);
 
-        Product[] expected = {product, book, smartphone};
-        Product[] actual = repo.findAll();
-
-        Assertions.assertArrayEquals(expected, actual);
+        Assertions.assertThrows(NotFoundException.class, () -> {
+            repo.removeById(4);
+        } );
     }
 
     @Test
@@ -86,6 +84,19 @@ public class RepositoryTest {
         String actual = smartphone.getManufacturer();
 
         Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testAddAlreadyAddedProduct() {
+        ProductRepository repo = new ProductRepository();
+
+        repo.saveProduct(product);
+        repo.saveProduct(book);
+        repo.saveProduct(smartphone);
+
+        Assertions.assertThrows(AlreadyExistsException.class, () -> {
+            repo.saveProduct(smartphone);
+        } );
     }
 
 
